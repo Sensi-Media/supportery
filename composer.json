@@ -1,5 +1,5 @@
 {
-    "name": "sensi/supportery",
+    "name": "sensimedia/supportery",
     "description": "Support classes and other stuff, Sensi-specific",
     "type": "library",
     "license": "MIT",
@@ -16,6 +16,10 @@
     ],
     "require": {
         "quibble/dabble": "^2.2",
-        "monolyth/disclosure": "^3.2"
+        "monolyth/disclosure": "^3.2",
+        "quibble/query": "^2.0"
+    },
+    "require-dev": {
+        "toast/unit": "^2.2"
     }
 }
