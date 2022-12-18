@@ -1,0 +1,18 @@
+{
+    "name": "sensimedia/supportery",
+    "description": "Support classes and other stuff, Sensi-specific",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sensimedia\\Supportery\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marijn Ophorst",
+            "email": "marijn@sensimedia.nl"
+        }
+    ],
+    "require": {}
+}
