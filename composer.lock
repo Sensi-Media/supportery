@@ -1,0 +1,754 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "7e10b284c45f7684ac2e4be6b16ffb87",
+    "packages": [
+        {
+            "name": "monolyth/cliff",
+            "version": "0.7.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monolyth-php/cliff.git",
+                "reference": "15dcc7713354aa83756899080a47b0736d492fca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monolyth-php/cliff/zipball/15dcc7713354aa83756899080a47b0736d492fca",
+                "reference": "15dcc7713354aa83756899080a47b0736d492fca",
+                "shasum": ""
+            },
+            "require": {
+                "monomelodies/reflex": "^0.3.0",
+                "php": ">=8.1",
+                "ulrichsg/getopt-php": "^3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "bin": [
+                "bin/cliff"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Monolyth\\Cliff\\": "./src",
+                    "Monolyth\\Cliff\\Demo\\": "./demo"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Command line interface for Monolyth unframework",
+            "support": {
+                "issues": "https://github.com/monolyth-php/cliff/issues",
+                "source": "https://github.com/monolyth-php/cliff/tree/0.7.8"
+            },
+            "time": "2022-10-05T11:35:22+00:00"
+        },
+        {
+            "name": "monolyth/disclosure",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monolyth-php/disclosure.git",
+                "reference": "3b146e1017cbf1671088f2677103d823a7785fc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monolyth-php/disclosure/zipball/3b146e1017cbf1671088f2677103d823a7785fc9",
+                "reference": "3b146e1017cbf1671088f2677103d823a7785fc9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/container": "^1.0",
+                "toast/unit": "^2.0"
+            },
+            "require-dev": {
+                "gentry/gentry": "^0.16.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Monolyth\\Disclosure\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Dependency injection for the Monolyth unframework",
+            "keywords": [
+                "dependency",
+                "injection",
+                "monolyth",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/monolyth-php/disclosure/issues",
+                "source": "https://github.com/monolyth-php/disclosure/tree/3.2.1"
+            },
+            "time": "2022-10-29T04:57:10+00:00"
+        },
+        {
+            "name": "monomelodies/kingconf",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monomelodies/kingconf.git",
+                "reference": "6709a1b23cd906a2a16bf8780730a404ca769e63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monomelodies/kingconf/zipball/6709a1b23cd906a2a16bf8780730a404ca769e63",
+                "reference": "6709a1b23cd906a2a16bf8780730a404ca769e63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "symfony/yaml": "^4.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Monomelodies\\Kingconf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Load configuration in any sane format",
+            "keywords": [
+                "config",
+                "configuration",
+                "ini",
+                "json",
+                "loader",
+                "php",
+                "xml",
+                "yaml"
+            ],
+            "support": {
+                "issues": "https://github.com/monomelodies/kingconf/issues",
+                "source": "https://github.com/monomelodies/kingconf/tree/master"
+            },
+            "time": "2019-06-06T13:16:02+00:00"
+        },
+        {
+            "name": "monomelodies/reflex",
+            "version": "0.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monomelodies/reflex.git",
+                "reference": "fe362bfda2cdc59344632f314420caac3604b41b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monomelodies/reflex/zipball/fe362bfda2cdc59344632f314420caac3604b41b",
+                "reference": "fe362bfda2cdc59344632f314420caac3604b41b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "zeptech/annotations": "^1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tests\\": "./classes-for-testing",
+                    "Monomelodies\\Reflex\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Reflection utilities for PHP8+",
+            "support": {
+                "issues": "https://github.com/monomelodies/reflex/issues",
+                "source": "https://github.com/monomelodies/reflex/tree/0.3.7"
+            },
+            "time": "2022-10-21T13:02:19+00:00"
+        },
+        {
+            "name": "ornament/core",
+            "version": "0.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ornament-orm/core.git",
+                "reference": "d8fb7a07eceec0f3301a6dcabef6ae00dc423cfd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ornament-orm/core/zipball/d8fb7a07eceec0f3301a6dcabef6ae00dc423cfd",
+                "reference": "d8fb7a07eceec0f3301a6dcabef6ae00dc423cfd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "gentry/gentry": "^0.14.0",
+                "toast/unit": "^2"
+            },
+            "suggest": {
+                "monolyth/formulaic": "PHP8 OO-forms with data binding for (Ornament) models"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ornament\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "PHP7 ORM toolkit, core package",
+            "keywords": [
+                "orm",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/ornament-orm/core/issues",
+                "source": "https://github.com/ornament-orm/core/tree/0.16.1"
+            },
+            "time": "2022-11-02T15:45:20+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/513e0666f7216c7459170d56df27dfcefe1689ea",
+                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/1.1.2"
+            },
+            "time": "2021-11-05T16:50:12+00:00"
+        },
+        {
+            "name": "quibble/dabble",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quibble-dbal/dabble.git",
+                "reference": "e1522718c8650859bc4f692f3b0a4f25b700ea71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quibble-dbal/dabble/zipball/e1522718c8650859bc4f692f3b0a4f25b700ea71",
+                "reference": "e1522718c8650859bc4f692f3b0a4f25b700ea71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "gentry/gentry": "^0.13.0",
+                "gentry/toast": "^0.1.0",
+                "toast/unit": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Quibble\\Dabble\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "DBAL for Quibble",
+            "support": {
+                "issues": "https://github.com/quibble-dbal/dabble/issues",
+                "source": "https://github.com/quibble-dbal/dabble/tree/2.2.1"
+            },
+            "time": "2022-03-09T14:44:34+00:00"
+        },
+        {
+            "name": "quibble/query",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quibble-dbal/query.git",
+                "reference": "9ac47dc337ee51be8e4563aa11a48b3fa46bb718"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quibble-dbal/query/zipball/9ac47dc337ee51be8e4563aa11a48b3fa46bb718",
+                "reference": "9ac47dc337ee51be8e4563aa11a48b3fa46bb718",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "quibble/dabble": "^2.0.1"
+            },
+            "require-dev": {
+                "gentry/gentry": "^0.13.0",
+                "quibble/sqlite": "^2.0.0",
+                "toast/unit": "^2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Quibble\\Query\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Query builder for Quibble",
+            "support": {
+                "issues": "https://github.com/quibble-dbal/query/issues",
+                "source": "https://github.com/quibble-dbal/query/tree/2.0.2"
+            },
+            "time": "2022-11-18T14:16:26+00:00"
+        },
+        {
+            "name": "simoneast/simple-ansi-colors",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimonEast/Simple-Ansi-Colors.git",
+                "reference": "7b0abb5d779e25fffd26bcceb3d88278d1c064ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimonEast/Simple-Ansi-Colors/zipball/7b0abb5d779e25fffd26bcceb3d88278d1c064ed",
+                "reference": "7b0abb5d779e25fffd26bcceb3d88278d1c064ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Ansi": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon East",
+                    "email": "simon@yump.com.au"
+                }
+            ],
+            "description": "Simple PHP class for converting basic HTML-like color tags into ANSI escape codes for use in console apps and scripts. Auto-detection for Windows/Ansicon users included.",
+            "homepage": "https://github.com/SimonEast/Simple-Ansi-Colors",
+            "keywords": [
+                "ansi",
+                "ansicon",
+                "color",
+                "colors",
+                "colour",
+                "colours",
+                "console"
+            ],
+            "support": {
+                "issues": "https://github.com/SimonEast/Simple-Ansi-Colors/issues",
+                "source": "https://github.com/SimonEast/Simple-Ansi-Colors/tree/master"
+            },
+            "time": "2015-11-24T03:03:27+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.27.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.27-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-11-03T14:55:06+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v4.4.45",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "aeccc4dc52a9e634f1d1eebeb21eacfdcff1053d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/aeccc4dc52a9e634f1d1eebeb21eacfdcff1053d",
+                "reference": "aeccc4dc52a9e634f1d1eebeb21eacfdcff1053d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "conflict": {
+                "symfony/console": "<3.4"
+            },
+            "require-dev": {
+                "symfony/console": "^3.4|^4.0|^5.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v4.4.45"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-08-02T15:47:23+00:00"
+        },
+        {
+            "name": "toast/unit",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/toast-php/unit.git",
+                "reference": "aabdb6913a38b67ef425da7b0f4443dff6f56805"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/toast-php/unit/zipball/aabdb6913a38b67ef425da7b0f4443dff6f56805",
+                "reference": "aabdb6913a38b67ef425da7b0f4443dff6f56805",
+                "shasum": ""
+            },
+            "require": {
+                "monolyth/cliff": "^0.7.0",
+                "monomelodies/kingconf": "^1.1.0",
+                "php": ">=8.1",
+                "simoneast/simple-ansi-colors": "^1.0"
+            },
+            "bin": [
+                "bin/toast"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toast\\Unit\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Ophorst",
+                    "email": "marijn@monomelodies.nl"
+                }
+            ],
+            "description": "Super-simple unit testing for PHP7",
+            "support": {
+                "issues": "https://github.com/toast-php/unit/issues",
+                "source": "https://github.com/toast-php/unit/tree/2.2.1"
+            },
+            "time": "2022-07-07T12:37:51+00:00"
+        },
+        {
+            "name": "ulrichsg/getopt-php",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getopt-php/getopt-php.git",
+                "reference": "9121d7c2c51a6a59ee407c49a13b4d8cfae71075"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getopt-php/getopt-php/zipball/9121d7c2c51a6a59ee407c49a13b4d8cfae71075",
+                "reference": "9121d7c2c51a6a59ee407c49a13b4d8cfae71075",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^2.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GetOpt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ulrich Schmidt-Goertz",
+                    "email": "ulrich@schmidt-goertz.de"
+                },
+                {
+                    "name": "Thomas Flori",
+                    "email": "thflori@gmail.com"
+                }
+            ],
+            "description": "Command line arguments parser for PHP 5.4 - 7.3",
+            "homepage": "http://getopt-php.github.io/getopt-php",
+            "support": {
+                "issues": "https://github.com/getopt-php/getopt-php/issues",
+                "source": "https://github.com/getopt-php/getopt-php/tree/v3.4.0"
+            },
+            "time": "2020-07-14T06:09:04+00:00"
+        },
+        {
+            "name": "zeptech/annotations",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pgraham/php-annotations.git",
+                "reference": "a6fdc51f067cd2bc618bdc6d103edf65303693da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pgraham/php-annotations/zipball/a6fdc51f067cd2bc618bdc6d103edf65303693da",
+                "reference": "a6fdc51f067cd2bc618bdc6d103edf65303693da",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "zpt\\anno": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Philip Graham",
+                    "email": "philip.robert.graham@gmail.com"
+                }
+            ],
+            "description": "DOC Block annotation parsing for PHP",
+            "homepage": "https://github.com/pgraham/php-annotations",
+            "keywords": [
+                "annotations"
+            ],
+            "support": {
+                "issues": "https://github.com/pgraham/php-annotations/issues",
+                "source": "https://github.com/pgraham/php-annotations/tree/1.2.0"
+            },
+            "time": "2022-03-19T17:19:13+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
