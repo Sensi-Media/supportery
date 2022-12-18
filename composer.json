@@ -17,7 +17,8 @@
     "require": {
         "quibble/dabble": "^2.2",
         "monolyth/disclosure": "^3.2",
-        "quibble/query": "^2.0"
+        "quibble/query": "^2.0",
+        "ornament/core": "^0.16.1"
     },
     "require-dev": {
         "toast/unit": "^2.2"
