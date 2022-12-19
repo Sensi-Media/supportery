@@ -1,11 +1,11 @@
 <?php
 
-namespace Sensi;
+namespace Sensi\Supportery;
 
 use Monolyth\Disclosure\Depends;
 use Quibble\Dabble\Adapter;
 use Quibble\Query\{ Select, SelectException, InsertException, UpdateException, DeleteException };
-use ReflectionClass, ReflectionProperty;
+use ReflectionObject, ReflectionProperty;
 use PDO;
 
 abstract class DatabaseRepository
@@ -28,7 +28,7 @@ abstract class DatabaseRepository
             $this->table = preg_replace('@_repository$@', '', str_replace('\\', '_', strtolower(get_class($this))));
         }
         if (!isset($this->model)) {
-            $this->model = preg_replace('@\Repository$@', '\Model', get_class($this));
+            $this->model = preg_replace('@Repository$@', 'Model', get_class($this));
         }
     }
 
@@ -55,7 +55,7 @@ abstract class DatabaseRepository
         $data = [];
         foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC) as $property) {
             $data[$property->name] = $model->{$property->name} ?? null;
-            if (!isset($model->{$this->identifier}, $data[$property->name])) {
+            if (!isset($model->{$this->identifier}) && !isset($data[$property->name])) {
                 unset($data[$property->name]);
             }
         }
@@ -67,7 +67,10 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $model = $this->find(isset($model->{$this->identifier}) ? $model->{$this->identifier} : $this->adapter->lastInsertId($this->table));
+            $newmodel = $this->findByIdentifier(isset($model->{$this->identifier})
+                ? $model->{$this->identifier}
+                : $this->adapter->lastInsertId($this->table));
+            $model->copyIdentity($newmodel);
             return null;
         } catch (InsertException $e) {
             return 'insert';
