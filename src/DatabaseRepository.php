@@ -7,6 +7,7 @@ use Quibble\Dabble\Adapter;
 use Quibble\Query\{ Select, SelectException, InsertException, UpdateException, DeleteException };
 use ReflectionObject, ReflectionProperty;
 use PDO;
+use TypeError;
 
 abstract class DatabaseRepository
 {
@@ -42,14 +43,14 @@ abstract class DatabaseRepository
     }
 
     /**
-     * @param object &$model
+     * @param object $model
      * @return null|string
-     * @throws Sensi\Supportery\ModelMismatchException
+     * @throws TypeError
      */
-    public function save(object &$model) :? string
+    public function save(object $model) :? string
     {
         if (!($model instanceof $this->model)) {
-            throw new ModelMismatchException($model, $this->model);
+            throw new TypeError($model, $this->model);
         }
         $reflection = new ReflectionObject($model);
         $data = [];
@@ -67,10 +68,9 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $newmodel = $this->findByIdentifier(isset($model->{$this->identifier})
+            $model->copyIdentity($this->findByIdentifier(isset($model->{$this->identifier})
                 ? $model->{$this->identifier}
-                : $this->adapter->lastInsertId($this->table));
-            $model->copyIdentity($newmodel);
+                : $this->adapter->lastInsertId($this->table)));
             return null;
         } catch (InsertException $e) {
             return 'insert';
@@ -82,12 +82,12 @@ abstract class DatabaseRepository
     /**
      * @param object $model
      * @return string|null
-     * @throws Sensi\Supportery\ModelMismatchException
+     * @throws TypeError
      */
     public function delete(object $model) :? string
     {
         if (!($model instanceof $this->model)) {
-            throw new ModelMismatchException($model, $this->model);
+            throw new TypeError($model, $this->model);
         }
         try {
             $this->adapter->delete($this->table)
