@@ -21,6 +21,8 @@
         "ornament/core": "^0.16.1"
     },
     "require-dev": {
-        "toast/unit": "^2.2"
+        "toast/unit": "^2.2",
+        "gentry/gentry": "^0.16.8",
+        "quibble/sqlite": "^2.0"
     }
 }
