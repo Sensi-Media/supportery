@@ -4,7 +4,7 @@ namespace Sensi;
 
 use Monolyth\Disclosure\Depends;
 use Quibble\Dabble\Adapter;
-use Quibble\Query\{ SelectException, InsertException, UpdateException, DeleteException };
+use Quibble\Query\{ Select, SelectException, InsertException, UpdateException, DeleteException };
 use ReflectionClass, ReflectionProperty;
 use PDO;
 
@@ -33,33 +33,12 @@ abstract class DatabaseRepository
     }
 
     /**
-     * @return array
-     */
-    public function all() : array
-    {
-        try {
-            $model = $this->model;
-            return $model::fromIterableCollection($this->adapter->select($this->table)
-                ->fetchAll(PDO::FETCH_ASSOC));
-        } catch (SelectException $e) {
-            return [];
-        }
-    }
-
-    /**
-     * @param int $id
+     * @param mixed $identifier
      * @return object|null
      */
-    public function find(int $id) :? object
+    public function findByIdentifier(mixed $identifier) :? object
     {
-        try {
-            $model = $this->model;
-            return $model::fromIterable($this->adapter->select($this->table)
-                ->where("{$this->identifier} = ?", $id)
-                ->fetch(PDO::FETCH_ASSOC));
-        } catch (SelectException $e) {
-            return null;
-        }
+        return $this->single($this->select()->where("{$this->identifier} = ?", $identifier));
     }
 
     /**
@@ -114,6 +93,42 @@ abstract class DatabaseRepository
             return null;
         } catch (DeleteException $e) {
             return 'database';
+        }
+    }
+
+    /**
+     * @return Quibble\Query\Select
+     */
+    protected function select() : Select
+    {
+        return $this->adapter->select($this->table);
+    }
+
+    /**
+     * @param Quibble\Query\Select $query
+     * @return array
+     */
+    protected function list(Select $query) : array
+    {
+        try {
+            $model = $this->model;
+            return $model::fromIterableCollection($query->fetchAll(PDO::FETCH_ASSOC));
+        } catch (SelectException $e) {
+            return [];
+        }
+    }
+
+    /**
+     * @param Quibble\Query\Select $query
+     * @return object|null
+     */
+    protected function single(Select $query) :? object
+    {
+        try {
+            $model = $this->model;
+            return $model::fromIterable($query->fetch(PDO::FETCH_ASSOC));
+        } catch (SelectException $e) {
+            return null;
         }
     }
 }
