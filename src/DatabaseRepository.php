@@ -3,7 +3,7 @@
 namespace Sensi\Supportery;
 
 use Monolyth\Disclosure\Depends;
-use Quibble\Dabble\Adapter;
+use Quibble\Dabble\{ Adapter, SqlException };
 use Quibble\Query\{ Select, SelectException, InsertException, UpdateException, DeleteException };
 use ReflectionObject, ReflectionProperty;
 use PDO;
@@ -80,6 +80,8 @@ abstract class DatabaseRepository
             $model->copyIdentity($this->findByIdentifier($model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table)));
             return null;
         } catch (InsertException $e) {
+            return 'insert';
+        } catch (SqlException $e) {
             return 'insert';
         } catch (UpdateException $e) {
             return 'update';
