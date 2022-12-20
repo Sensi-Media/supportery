@@ -135,6 +135,7 @@ abstract class DatabaseRepository
      */
     protected function single(Select $query) :? object
     {
+        $query = $query->limit(1);
         try {
             $model = $this->model;
             return $model::fromIterable($query->fetch(PDO::FETCH_ASSOC));
