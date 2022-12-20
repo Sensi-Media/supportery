@@ -44,10 +44,12 @@ abstract class DatabaseRepository
 
     /**
      * @param object $model
+     * @param array $includeFields Optional extra array of fields to store (e.g.
+     *  protected because encryption was needed).
      * @return null|string
      * @throws TypeError
      */
-    public function save(object $model) :? string
+    public function save(object $model, array $includeFields = []) :? string
     {
         if (get_class($model) != $this->model) {
             throw new TypeError(sprintf(
@@ -58,12 +60,13 @@ abstract class DatabaseRepository
         }
         $reflection = new ReflectionObject($model);
         $data = [];
-        foreach ($reflection->getProperties(
-            ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED & ~ReflectionProperty::IS_STATIC
-        ) as $property) {
-            $data[$property->name] = $model->{$property->name} ?? null;
-            if (!isset($model->{$this->identifier}) && !isset($data[$property->name])) {
-                unset($data[$property->name]);
+        foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC) as $property) {
+            $includeFields[] = $property->name;
+        }
+        foreach ($includeFields as $property) {
+            $data[$property] = $model->$property ?? null;
+            if (!isset($model->{$this->identifier}) && !isset($data[$property])) {
+                unset($data[$property]);
             }
         }
         try {
@@ -74,9 +77,7 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $model->copyIdentity($this->findByIdentifier(isset($model->{$this->identifier})
-                ? $model->{$this->identifier}
-                : $this->adapter->lastInsertId($this->table)));
+            $model->copyIdentity($this->findByIdentifier($model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table)));
             return null;
         } catch (InsertException $e) {
             return 'insert';
