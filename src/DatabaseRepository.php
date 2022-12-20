@@ -49,8 +49,12 @@ abstract class DatabaseRepository
      */
     public function save(object $model) :? string
     {
-        if (!($model instanceof $this->model)) {
-            throw new TypeError($model, $this->model);
+        if (get_class($model) != $this->model) {
+            throw new TypeError(sprintf(
+                "\$model must be an instance of %s, %s given",
+                $this->model,
+                get_class($model)
+            ));
         }
         $reflection = new ReflectionObject($model);
         $data = [];
@@ -86,8 +90,12 @@ abstract class DatabaseRepository
      */
     public function delete(object $model) :? string
     {
-        if (!($model instanceof $this->model)) {
-            throw new TypeError($model, $this->model);
+        if (get_class($model) != $this->model) {
+            throw new TypeError(sprintf(
+                "\$model must be an instance of %s, %s given",
+                $this->model,
+                get_class($model)
+            ));
         }
         try {
             $this->adapter->delete($this->table)
