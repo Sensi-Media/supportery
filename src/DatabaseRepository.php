@@ -58,7 +58,9 @@ abstract class DatabaseRepository
         }
         $reflection = new ReflectionObject($model);
         $data = [];
-        foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC) as $property) {
+        foreach ($reflection->getProperties(
+            ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED & ~ReflectionProperty::IS_STATIC
+        ) as $property) {
             $data[$property->name] = $model->{$property->name} ?? null;
             if (!isset($model->{$this->identifier}) && !isset($data[$property->name])) {
                 unset($data[$property->name]);
