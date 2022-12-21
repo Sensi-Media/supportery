@@ -58,16 +58,9 @@ abstract class DatabaseRepository
                 get_class($model)
             ));
         }
-        $reflection = new ReflectionObject($model);
-        $data = [];
-        foreach ($reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_STATIC) as $property) {
-            $includeFields[] = $property->name;
-        }
-        foreach ($includeFields as $property) {
-            $data[$property] = $model->$property ?? null;
-            if (!isset($model->{$this->identifier}) && !isset($data[$property])) {
-                unset($data[$property]);
-            }
+        $data = $model->getPersistableData($includeFields);
+        if (!isset($model->{$this->identifier})) {
+            $data = array_filter($data, fn ($value) => $value !== null);
         }
         try {
             if (isset($model->{$this->identifier})) {
