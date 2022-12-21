@@ -207,23 +207,23 @@
         },
         {
             "name": "ornament/core",
-            "version": "0.16.2",
+            "version": "0.16.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ornament-orm/core.git",
-                "reference": "98ba12969e404cf1f9171cf9ee89360ff7d2a429"
+                "reference": "4b4daeacc7c1ae4fefcb2d72d6ae78e59bacec97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ornament-orm/core/zipball/98ba12969e404cf1f9171cf9ee89360ff7d2a429",
-                "reference": "98ba12969e404cf1f9171cf9ee89360ff7d2a429",
+                "url": "https://api.github.com/repos/ornament-orm/core/zipball/4b4daeacc7c1ae4fefcb2d72d6ae78e59bacec97",
+                "reference": "4b4daeacc7c1ae4fefcb2d72d6ae78e59bacec97",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
             "require-dev": {
-                "gentry/gentry": "^0.14.0",
+                "gentry/gentry": "^0.16.0",
                 "toast/unit": "^2"
             },
             "suggest": {
@@ -252,9 +252,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ornament-orm/core/issues",
-                "source": "https://github.com/ornament-orm/core/tree/0.16.2"
+                "source": "https://github.com/ornament-orm/core/tree/0.16.5"
             },
-            "time": "2022-12-19T16:17:24+00:00"
+            "time": "2022-12-21T13:36:38+00:00"
         },
         {
             "name": "psr/container",
@@ -745,16 +745,16 @@
     "packages-dev": [
         {
             "name": "gentry/gentry",
-            "version": "0.16.8",
+            "version": "0.16.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gentry-php/gentry.git",
-                "reference": "36578c568672b76d82e9048af874cc4954efebb3"
+                "reference": "8d303e02206084dbc237dec4b7fdf61f8879007b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gentry-php/gentry/zipball/36578c568672b76d82e9048af874cc4954efebb3",
-                "reference": "36578c568672b76d82e9048af874cc4954efebb3",
+                "url": "https://api.github.com/repos/gentry-php/gentry/zipball/8d303e02206084dbc237dec4b7fdf61f8879007b",
+                "reference": "8d303e02206084dbc237dec4b7fdf61f8879007b",
                 "shasum": ""
             },
             "require": {
@@ -790,9 +790,9 @@
             "description": "PHP unit test generation tools",
             "support": {
                 "issues": "https://github.com/gentry-php/gentry/issues",
-                "source": "https://github.com/gentry-php/gentry/tree/0.16.8"
+                "source": "https://github.com/gentry-php/gentry/tree/0.16.9"
             },
-            "time": "2022-12-12T15:37:15+00:00"
+            "time": "2022-12-21T12:19:13+00:00"
         },
         {
             "name": "quibble/sqlite",
