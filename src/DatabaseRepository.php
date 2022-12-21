@@ -63,7 +63,9 @@ abstract class DatabaseRepository
             $data = array_filter($data, fn ($value) => $value !== null);
         }
         try {
-            if (isset($model->{$this->identifier})) {
+            if (isset($model->{$this->identifier})
+                && $this->select()->fields($this->identifier)->where("{$this->identifier} = ?", $model->{$this->identifier)->fetchColumn() !== false
+            ) {
                 $query = $this->adapter->update($this->table)
                     ->where("{$this->identifier} = ?", $model->{$this->identifier});
             } else {
