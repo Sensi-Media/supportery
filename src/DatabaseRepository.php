@@ -64,7 +64,7 @@ abstract class DatabaseRepository
         }
         try {
             if (isset($model->{$this->identifier})
-                && $this->select()->fields($this->identifier)->where("{$this->identifier} = ?", $model->{$this->identifier)->fetchColumn() !== false
+                && $this->select()->fields($this->identifier)->where("{$this->identifier} = ?", $model->{$this->identifier})->fetchColumn() !== false
             ) {
                 $query = $this->adapter->update($this->table)
                     ->where("{$this->identifier} = ?", $model->{$this->identifier});
