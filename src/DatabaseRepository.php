@@ -49,7 +49,7 @@ abstract class DatabaseRepository
      * @return null|string
      * @throws TypeError
      */
-    public function save(object $model, array $includeFields = []) :? string
+    public function save(object &$model, array $includeFields = []) :? string
     {
         if (get_class($model) != $this->model) {
             throw new TypeError(sprintf(
@@ -72,7 +72,7 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $model->copyIdentity($this->findByIdentifier($model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table)));
+            $model = $this->findByIdentifier($model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table));
             return null;
         } catch (InsertException $e) {
             return 'insert';
