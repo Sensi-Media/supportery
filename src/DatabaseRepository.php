@@ -2,7 +2,7 @@
 
 namespace Sensi\Supportery;
 
-use Monolyth\Disclosure\Depends;
+use Monolyth\Disclosure\{ Depends, Factory };
 use Quibble\Dabble\{ Adapter, SqlException };
 use Quibble\Query\{ Select, SelectException, InsertException, UpdateException, DeleteException };
 use ReflectionObject, ReflectionProperty;
@@ -122,8 +122,9 @@ abstract class DatabaseRepository
     protected function list(Select $query) : array
     {
         try {
-            $model = $this->model;
-            return $model::fromIterableCollection($query->fetchAll(PDO::FETCH_ASSOC));
+            $items = $query->fetchAll(PDO::FETCH_ASSOC);
+            array_walk($item, fn (&$item) => $item = Factory::build($this->model, $item));
+            return $items;
         } catch (SelectException $e) {
             return [];
         }
@@ -137,8 +138,7 @@ abstract class DatabaseRepository
     {
         $query = $query->limit(1);
         try {
-            $model = $this->model;
-            return $model::fromIterable($query->fetch(PDO::FETCH_ASSOC));
+            return Factory::build($this->model, $query->fetch(PDO::FETCH_ASSOC));
         } catch (SelectException $e) {
             return null;
         }
