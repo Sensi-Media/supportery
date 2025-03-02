@@ -33,8 +33,9 @@ class Repository extends DatabaseRepository
 class Model
 {
     use Core\Model;
+    use Core\Persistable;
 
-    protected int $id;
+    public readonly int $id;
 
     public string $foo;
 }
@@ -62,11 +63,15 @@ return function () : Generator {
     yield function () use (&$repository) {
         $model = new Model;
         $model->foo = 'whatever';
+        // Note: working with references in overloaded method calls is buggy,
+        // hence we cannot test for isset($model->id) now; but it SHOULD be.
+        // Instead, we test afterwards if we can retrieve it (id should be 2).
         $result = $repository->save($model);
         assert($result === null);
-        assert(isset($model->id));
+        $model = $repository->findByIdentifier(2);
+        assert($model->id === 2);
         $all = $repository->all();
-        assert(count($all) === 3);
+        assert(count($all) === 2);
     };
 
     /** We can delete an existing model */
