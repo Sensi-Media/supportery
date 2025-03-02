@@ -16,7 +16,7 @@
     ],
     "require": {
         "quibble/dabble": "^2.2",
-        "monolyth/disclosure": "^3.2",
+        "monolyth/disclosure": "^3.2.1",
         "quibble/query": "^2.0",
         "ornament/core": "^0.17.0",
         "monomelodies/monki": "^1.2",
