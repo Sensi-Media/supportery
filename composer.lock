@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40e9629d30390bf4ed95cf7b4155cbd6",
+    "content-hash": "81121661352c0ce77ecd2dfa47d2f7de",
     "packages": [
         {
             "name": "jakeasmith/http_build_url",
@@ -300,16 +300,16 @@
         },
         {
             "name": "monolyth/disclosure",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monolyth-php/disclosure.git",
-                "reference": "3b146e1017cbf1671088f2677103d823a7785fc9"
+                "reference": "696871b6de80c27167b993b9f8206102b83b247e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monolyth-php/disclosure/zipball/3b146e1017cbf1671088f2677103d823a7785fc9",
-                "reference": "3b146e1017cbf1671088f2677103d823a7785fc9",
+                "url": "https://api.github.com/repos/monolyth-php/disclosure/zipball/696871b6de80c27167b993b9f8206102b83b247e",
+                "reference": "696871b6de80c27167b993b9f8206102b83b247e",
                 "shasum": ""
             },
             "require": {
@@ -345,9 +345,9 @@
             ],
             "support": {
                 "issues": "https://github.com/monolyth-php/disclosure/issues",
-                "source": "https://github.com/monolyth-php/disclosure/tree/3.2.1"
+                "source": "https://github.com/monolyth-php/disclosure/tree/3.2.2"
             },
-            "time": "2022-10-29T04:57:10+00:00"
+            "time": "2025-02-25T17:12:17+00:00"
         },
         {
             "name": "monolyth/reroute",
