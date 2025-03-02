@@ -123,7 +123,7 @@ abstract class DatabaseRepository
     {
         try {
             $items = $query->fetchAll(PDO::FETCH_ASSOC);
-            array_walk($item, fn (&$item) => $item = Factory::build($this->model, $item));
+            array_walk($items, fn (&$item) => $item = Factory::build($this->model, $item));
             return $items;
         } catch (SelectException $e) {
             return [];
