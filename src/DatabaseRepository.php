@@ -43,7 +43,7 @@ abstract class DatabaseRepository
     }
 
     /**
-     * @param object $model
+     * @param object &$model
      * @param array $includeFields Optional extra array of fields to store (e.g.
      *  protected because encryption was needed).
      * @return null|string
@@ -64,7 +64,10 @@ abstract class DatabaseRepository
         }
         try {
             if (isset($model->{$this->identifier})
-                && $this->select()->fields($this->identifier)->where("{$this->identifier} = ?", $model->{$this->identifier})->fetchColumn() !== false
+                && $this->select()
+                    ->fields($this->identifier)
+                    ->where("{$this->identifier} = ?", $model->{$this->identifier})
+                    ->fetchColumn() !== false
             ) {
                 $query = $this->adapter->update($this->table)
                     ->where("{$this->identifier} = ?", $model->{$this->identifier});
