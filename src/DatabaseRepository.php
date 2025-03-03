@@ -75,7 +75,8 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $model = $this->findByIdentifier($model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table));
+            $id = $mocel->{$this->identifier} ?? $this->adapter->lastInsertId($this->table);
+            $model = $this->findByIdentifier($id);
             return null;
         } catch (InsertException $e) {
             return 'insert';
@@ -91,7 +92,7 @@ abstract class DatabaseRepository
      * @return string|null
      * @throws TypeError
      */
-    public function delete(object $model) :? string
+    public function delete(object &$model) :? string
     {
         if (get_class($model) != $this->model) {
             throw new TypeError(sprintf(
@@ -104,6 +105,7 @@ abstract class DatabaseRepository
             $this->adapter->delete($this->table)
                 ->where("{$this->identifier} = ?", $model->id)
                 ->execute();
+            $model = null;
             return null;
         } catch (DeleteException $e) {
             return 'database';
