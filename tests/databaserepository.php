@@ -9,18 +9,7 @@ use Quibble\Query\Buildable;
 use Gentry\Gentry\Wrapper;
 use Generator;
 use Ornament\Core;
-
-(new Container)->register(function (&$adapter) {
-    $adapter = new class(':memory:') extends Adapter {
-        use Buildable;
-    };
-    $adapter->query("
-        CREATE TABLE test (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            foo TEXT NOT NULL
-        )");
-    $adapter->query("INSERT INTO test (foo) VALUES ('bar'), ('buzz')");
-});
+use PDO;
 
 class Repository extends DatabaseRepository
 {
@@ -40,10 +29,25 @@ class Model
     public string $foo;
 }
 
+(new Container)->register(function (&$adapter) {
+    $adapter = new class(':memory:', null, null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]) extends Adapter {
+        use Buildable;
+    };
+    $adapter->exec("
+        CREATE TABLE test (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            foo TEXT NOT NULL
+        )");
+});
+
 /** Tests for database repository */
 return function () : Generator {
     $this->beforeEach(function () use (&$repository) {
-       $repository = new Wrapper(Factory::build(Repository::class));
+        $adapter = (new Container)->get('adapter');
+        $adapter->exec("DELETE FROM test");
+        $adapter->exec("INSERT INTO test (id, foo) VALUES (1, 'bar'), (2, 'buzz')");
+        $repository = new Wrapper(Factory::build(Repository::class));
+       //$repository = Factory::build(Repository::class);
     });
 
     /** We can find all models */
@@ -68,17 +72,17 @@ return function () : Generator {
         // Instead, we test afterwards if we can retrieve it (id should be 2).
         $result = $repository->save($model);
         assert($result === null);
-        $model = $repository->findByIdentifier(2);
-        assert($model->id === 2);
+        $model = $repository->findByIdentifier(3);
+        assert($model->id === 3);
         $all = $repository->all();
-        assert(count($all) === 2);
+        assert(count($all) === 3);
     };
 
     /** We can delete an existing model */
     yield function () use (&$repository) {
         $model = $repository->findByIdentifier(1);
         assert($model instanceof Model);
-        $repository->delete($model);
+        $result = $repository->delete($model);
         $model = $repository->findByIdentifier(1);
         assert($model === null);
     };
