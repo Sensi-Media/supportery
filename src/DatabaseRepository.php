@@ -75,7 +75,7 @@ abstract class DatabaseRepository
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
-            $id = $mocel->{$this->identifier} ?? $this->adapter->lastInsertId($this->table);
+            $id = $model->{$this->identifier} ?? $this->adapter->lastInsertId($this->table);
             $model = $this->findByIdentifier($id);
             return null;
         } catch (InsertException $e) {
