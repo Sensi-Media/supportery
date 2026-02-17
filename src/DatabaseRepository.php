@@ -58,10 +58,6 @@ abstract class DatabaseRepository
                 get_class($model)
             ));
         }
-        $data = $model->getPersistableData($includeFields);
-        if (!isset($model->{$this->identifier})) {
-            $data = array_filter($data, fn ($value) => $value !== null);
-        }
         try {
             if (isset($model->{$this->identifier})
                 && $this->select()
@@ -69,9 +65,16 @@ abstract class DatabaseRepository
                     ->where("{$this->identifier} = ?", $model->{$this->identifier})
                     ->fetchColumn() !== false
             ) {
+                $data = $model->getPersistableData($includeFields);
                 $query = $this->adapter->update($this->table)
                     ->where("{$this->identifier} = ?", $model->{$this->identifier});
             } else {
+                $data = [];
+                foreach ($model as $prop => $value) {
+                    if (!is_null($value)) {
+                        $data[$prop] = $value;
+                    }
+                }
                 $query = $this->adapter->insert($this->table);
             }
             $query->execute($data);
@@ -81,7 +84,7 @@ abstract class DatabaseRepository
         } catch (InsertException $e) {
             return 'insert';
         } catch (SqlException $e) {
-            return 'insert';
+            return 'generic';
         } catch (UpdateException $e) {
             return 'update';
         }
