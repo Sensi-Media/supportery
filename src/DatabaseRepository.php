@@ -44,12 +44,10 @@ abstract class DatabaseRepository
 
     /**
      * @param object &$model
-     * @param array $includeFields Optional extra array of fields to store (e.g.
-     *  protected because encryption was needed).
      * @return null|string
      * @throws TypeError
      */
-    public function save(object &$model, array $includeFields = []) :? string
+    public function save(object &$model) :? string
     {
         if (get_class($model) != $this->model) {
             throw new TypeError(sprintf(
@@ -65,14 +63,23 @@ abstract class DatabaseRepository
                     ->where("{$this->identifier} = ?", $model->{$this->identifier})
                     ->fetchColumn() !== false
             ) {
-                $data = $model->getPersistableData($includeFields);
+                $data = [];
+                $reflection = new ReflectionObject($model);
+                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_READONLY);
+                foreach ($props as $prop) {
+                    $name = $prop->getName();
+                    $data[$name] = $model->$name;
+                }
                 $query = $this->adapter->update($this->table)
                     ->where("{$this->identifier} = ?", $model->{$this->identifier});
             } else {
                 $data = [];
-                foreach ($model as $prop => $value) {
-                    if (!is_null($value)) {
-                        $data[$prop] = $value;
+                $reflection = new ReflectionObject($model);
+                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_READONLY);
+                foreach ($props as $prop) {
+                    $name = $prop->getName();
+                    if (isset($model->$name)) {
+                        $data[$name] = $model->$name;
                     }
                 }
                 $query = $this->adapter->insert($this->table);
