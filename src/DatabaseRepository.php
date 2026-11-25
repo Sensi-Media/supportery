@@ -75,7 +75,7 @@ abstract class DatabaseRepository
             } else {
                 $data = [];
                 $reflection = new ReflectionObject($model);
-                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_READONLY);
+                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
                 foreach ($props as $prop) {
                     $name = $prop->getName();
                     if (isset($model->$name)) {
