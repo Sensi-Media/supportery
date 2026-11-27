@@ -65,8 +65,11 @@ abstract class DatabaseRepository
             ) {
                 $data = [];
                 $reflection = new ReflectionObject($model);
-                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC & ~ReflectionProperty::IS_READONLY);
+                $props = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
                 foreach ($props as $prop) {
+                    if ($prop->isReadOnly()) {
+                        continue;
+                    }
                     $name = $prop->getName();
                     $data[$name] = $model->$name;
                 }
